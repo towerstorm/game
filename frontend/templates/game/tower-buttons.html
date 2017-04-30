@@ -1,0 +1,7 @@
+<div id="towerButtons" class="tower-buttons" style="width: {{ sidebar.width }}px">
+    <div class="tower {{  tower.towerType }}" ng-repeat="tower in towerButtons" ng-class="{selected: pickedTower==tower.towerType, unavailable: !buttonStates.canPickTower[tower.towerType], invisible: !buttonStates.canSeeTowerButton[tower.towerType]}" ng-click="clickPickTower(tower.towerType)">
+        <div class="dummy"></div>
+        <div class="tower-image" style="background: transparent url({{tower.url}}) no-repeat center center; background-size: 100% auto;"></div>
+        <div class="highlight-overlay" ng-show="highlighted.tower == tower.towerType"></div>
+    </div>
+</div>

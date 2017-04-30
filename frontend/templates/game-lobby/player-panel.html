@@ -1,0 +1,9 @@
+<div class="card-block">
+  <h3>{{name}}</h3>
+  <div ng-show="isInSelection()">
+    <img src="/img/race-icons/{{race}}.png" class="float-right" width="64" height="64">
+    <div ng-repeat="minion in minions">
+      <img src="/img/minion-icons/{{minion}}.png" class="float-left mb-2" width="32" height="32">
+    </div>
+  </div>
+</div>

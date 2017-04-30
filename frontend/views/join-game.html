@@ -1,0 +1,19 @@
+<div class="home" ng-init="viewLoaded()">
+    <div class="container join-game">
+        <h1 class="cufon">Join Game</h1>
+        <div class="row">
+            <table class="table table-striped table-bordered table-hover" id="gamesList">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="game in games" ng-click="joinGame(game.code)">
+                        <td class="name cufon">{{game.code}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+Game logs for each game that runs on this server are logged out here.

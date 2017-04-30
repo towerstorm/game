@@ -1,0 +1,17 @@
+<div class="chat-room">
+    <div class="messages" scroll-glue>
+        <ul class="list-unstyled">
+            <li ng-repeat="message in messages track by $index">{{message}}</li>
+        </ul>
+    </div>
+    <div class="input-box">
+        <form ng-submit="publish()">
+            <div class="input-group">
+                <input id="chat-input" class="input-sm form-control" type="text" ng-model="newMessage" enter-focuses/>
+                <span class="input-group-btn">
+                    <input class="input-sm btn btn-default" type="submit" value="send" ng-class="{disabled: !id}"/>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>

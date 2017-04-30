@@ -1,0 +1,28 @@
+<div ng-show="raceId">
+  <h3>{{name}}</h3>
+  {{desccription}}
+  <div class="row">
+    <div class="col-md-6" ng-repeat="tower in towers">
+      <h5>{{tower.name}}</h5>
+      <p>{{tower.description}}</p>
+      <table class="table table-sm">
+        <tr>
+          <td>Cost</td>
+          <td>{{tower.cost}}</td>
+        </tr>
+        <tr>
+          <td>Damage</td>
+          <td>{{tower.damage}}</td>
+        </tr>
+        <tr>
+          <td>Attack Speed</td>
+          <td>{{tower.attackSpeed}}</td>
+        </tr>
+        <tr>
+          <td>Range</td>
+          <td>{{tower.range}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

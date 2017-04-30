@@ -1,0 +1,19 @@
+<div class="chat-bar">
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li class="chat-tab" ng-repeat="room in chatRooms" ng-show="room.visible" ng-class="{active: room.open, unreadMessages: room.unreadMessages}">
+                <a ng-click="toggleRoom(room.id)">
+                    <span class="close-room pull-right" ng-click="closeRoom(room.id); $event.stopPropagation()">
+                        <i class="fa fa-times fa-fw text-"></i>
+                    </span>
+                    {{ room.name }}
+                </a>
+            </li>
+        </ul>
+        <div class="chat-rooms" ng-repeat="room in chatRooms">
+            <div class="chat-room-window" ng-show="room.open">
+                <div chat-room id="{{room.id}}" ng-show="room.id"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div ng-repeat="race in races" data-title="{{race.name}}" class="race-icon-wrap {{race.id}}" ng-click="selectRace(race.id)">
+    <img width="64" height="64" style="background: url('/img/race-icons/{{race.id}}.png'); background-size: 100% auto;" class="rounded float-left"></div>
+    <!--<div class="race-icon-border"></div>-->
+    <!--<div class="chosen-overlay" ng-show="takenRaces[getMainPlayer().team][race.id]"></div>-->
+    <!--<div class="selected-overlay" ng-show="getMainPlayer().race == race.id"></div>-->
+</div>

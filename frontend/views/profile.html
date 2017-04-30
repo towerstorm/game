@@ -1,0 +1,8 @@
+<div class="profile" ng-init="viewLoaded()">
+    <div login-screen></div>
+    <div class="user-details" ng-show="user != null">
+        User profile for {{ user.username }}
+        <div class="email">Email: {{ user.email }}</div>
+        <div class="storm-points">Storm Points: {{ user.stormPoints }}</div>
+    </div>
+</div>

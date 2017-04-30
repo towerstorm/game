@@ -1,0 +1,1 @@
+Game logs for each client are sent through socket.io and written here.

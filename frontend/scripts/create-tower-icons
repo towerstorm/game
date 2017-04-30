@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd ../assets/img/towers
+for file in ./*.png; do
+    convert $file -crop 64x64+0+0 ../tower-icons/$file 
+done

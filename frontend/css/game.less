@@ -1,0 +1,669 @@
+body {
+//  padding: 0 !important;
+  margin: 0 !important;
+//  overflow-y: hidden;
+  height: 100;
+  font-size: 12px;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.no-tap-highlight {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+@-webkit-keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+.blink {
+  -webkit-animation: blink 1s linear infinite;
+  -moz-animation: blink 1s linear infinite;
+  -ms-animation: blink 1s linear infinite;
+  -o-animation: blink 1s linear infinite;
+  animation: blink 1s linear infinite;
+}
+
+.highlight (@padding: 0%) {
+  position: absolute;
+  height: 100% - @padding * 2;
+  width: 100% - @padding * 2;
+  top: @padding;
+  left: @padding;
+  background-color: white;
+}
+.fade-in.ng-enter {
+  -webkit-animation: enter_sequence 1s linear; /* Safari/Chrome */
+  animation: enter_sequence 1s linear; /* IE10+ and Future Browsers */
+}
+@-webkit-keyframes enter_sequence {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@keyframes enter_sequence {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+.full-height {
+  height: 100%;
+}
+
+.space-tile {
+  width: 100%;
+  height: 100%;
+  background: transparent url("/img/space-tile.png") repeat top left;
+}
+
+#game {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  .unselectable;
+
+  #game-wrapper {
+//    overflow-y: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  //  background: #000 url("/img/grass.png") no-repeat center center;
+
+    #left-sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      line-height: 0;
+      .unselectable;
+    }
+    .menu {
+      .button {
+        .no-tap-highlight;
+        width: 50%;
+        height: auto;
+        float: right;
+        cursor: pointer;
+      }
+    }
+    #top-sidebar {
+      position: absolute;
+      width: 100%;
+      height: 50px;
+      top: 10px;
+      z-index: 10;
+      .unselectable;
+      #top-sidebar > div {
+        height: 100%;
+      }
+      .info {
+        font-size: 1.5em;
+        color: white;
+        margin: 0px auto;
+        height: 100%;
+        width: 440px;
+  
+        .gold, .income, .souls, .time {
+          position: relative;
+          display: inline-block;
+          width: 100px;
+          height: 100%;
+          float: left;
+          margin-right: 10px;
+          background-color: #222;
+  
+          .dummy {
+            margin-top: 100%;
+          }
+  
+          .highlight-overlay {
+            .highlight;
+            .blink;
+          }
+  
+          .text {
+            text-align: center;
+            font-size: 1em;
+          }
+          
+          .caption {
+            font-size: 0.5em;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .tower-buttons {
+      background-color: transparent;
+      width: 100%;
+      float: left;
+      border-top: 1px solid #888;
+      border-left: 1px solid #888;
+      
+
+      .tower {
+        .no-tap-highlight;
+        position: relative;
+        width: 50%;
+        display: inline-block;
+        cursor: pointer;
+//        padding: 0px 10% 20% 10%;
+        background-color: #222;
+        border-right: 1px solid #888;
+        border-bottom: 1px solid #888;
+
+        .dummy {
+          margin-top: 100%;
+        }
+
+        .tower-image {
+          position: absolute;
+          width: 80%;
+          height: 80%;
+          top: 5%;
+          left: 8%;
+        }
+
+        &.unavailable {
+          opacity: 0.3;
+
+          .tower-image {
+            opacity: 0.5
+          }
+        }
+
+        &.invisible {
+          display: hidden;
+        }
+
+        .highlight-overlay {
+          z-index: 15;
+          position: absolute;
+          .highlight(10%);
+          .blink;
+        }
+
+      }
+
+      .selected {
+        opacity: 2;
+        background-color: #666;
+      }
+    }
+
+    .chat-wrapper {
+      width: 47%;
+      bottom: 0;
+      height: 30%;
+      position: absolute;
+      color: #fff;
+      font-weight: bold;
+      pointer-events: none;
+
+      &.left-side {
+        left: 0
+      }
+
+      &.right-side {
+        right: 0
+      }
+
+      .chat-room {
+        background-color: transparent;
+        height: 100%;
+
+        .messages {
+          background-color: rgba(0, 0, 0, 0.2);
+
+          &::-webkit-scrollbar * {
+            background:rgba(255, 255, 255, 0.2); // manage scrollbar background color here
+          }
+          &::-webkit-scrollbar-thumb {
+            background:rgba(255, 255, 255, 0.2) !important; // manage scrollbar thumb background color here
+          }
+        }
+
+        .input-box {
+          background-color: transparent;
+          bottom: 0;
+
+          input {
+            background-color: transparent;
+            border: 0;
+            color: #fff;
+            font-weight: bold;
+
+            &:focus {
+              outline: none;
+              background-color: rgba(255, 255, 255, 0.2);
+            }
+
+          }
+        }
+      }
+    }
+
+    #playField {
+      width: 100%;
+      height: 100%;
+    }
+
+    .play-field {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      #canvas {
+      }
+
+      .helper-text {
+        width: 100%;
+        height: 6%;
+        padding-top: 1%;
+        position: absolute;
+        left: 0px;
+        top: 10%;
+        background-color: black;
+        opacity: 0.6;
+        color: white;
+        font-size: 2.2em;
+        text-align: center;
+        pointer-events: none;
+
+        .text {
+          opacity: 1;
+        }
+      }
+
+      .info-panel-wrapper {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+
+        .info-panel {
+          z-index: 20;
+          -webkit-text-size-adjust: 100%;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          padding: 10% 10%;
+          box-sizing: border-box;
+          background: transparent url("/img/info-panel.png") no-repeat center center;
+          background-size: 100% auto;
+          top: 0px;
+          left: 0px;
+          color: white;
+          font-size: 1.5em;
+        }
+      }
+
+      .tower-panel-wrapper {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 40%;
+        height: 51%;
+
+        .tower-panel {
+          z-index: 20;
+          -webkit-text-size-adjust: 100%;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          background-color: #222;
+          top: 0px;
+          left: 0px;
+          color: white;
+
+
+          .close-left, .close-right {
+            position: absolute;
+            top: 0;
+            width: 10%;
+            height: 15%;
+          }
+          .close-left {
+            left: 0;
+          }
+          .close-right {
+            right: 0;
+          }
+
+          .title {
+            font-size: 2.5em;
+            text-align: center;
+            padding-top: 1.5%;
+            padding-bottom: 1.5%;
+            line-height: 100%;
+          }
+
+
+          .text {
+            font-size: 1em;
+            line-height: 120%;
+            height: 80%;
+            padding: 0% 5% 0% 5%;
+
+            .sub-title {
+              font-weight: bold;
+              color: #F5E42C;
+            }
+
+            .current {
+              font-weight: bold;
+              color: #ff9806;
+            }
+
+            .modifiers {
+              font-weight: bold;
+              color: #4780f2;
+            }
+
+            .auras {
+              font-weight: bold;
+              color: #6cba4e;
+            }
+
+            .buttons {
+              width: 100%;
+              height: 35%;
+              float: left;
+              position: relative;
+            }
+
+            .btn-tower {
+              height: 20%;
+              position: absolute;
+              cursor: pointer;
+              box-sizing: border-box;
+              background-color: #222;
+
+              .text {
+                text-align: center;
+                font-size: 1.5em;
+                margin-top: 5%;
+                font-weight: bold;
+              }
+            }
+
+            .btn-upgrade {
+              width: 50%;
+              left: 0;
+              bottom: 0;
+              background-color: #444;
+              border: 1px solid #666;
+              .text {
+                text-align: center;
+              }
+              .highlight-overlay {
+                .highlight;
+                .blink;
+              }
+            }
+            .btn-sell {
+              width: 50%;
+              right: 0;
+              bottom: 0;
+              background-color: #444;
+              border: 1px solid #666;
+              .text {
+                text-align: center;
+                color: #da4f49;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    #right-sidebar {
+      z-index: 10;
+      position: absolute;
+      top: 0;
+      right: 0;
+      .unselectable;
+    }
+
+    .minion-buttons {
+      .no-tap-highlight;
+      width: 100%;
+      right: 0;
+      top: 0;
+      border-top: 1px solid #888;
+      border-left: 1px solid #888;
+
+      .minion {
+        .unselectable;
+        position: relative;
+        opacity: 1;
+        width: 50%;
+        float: left;
+        cursor: pointer;
+        background-color: #222;
+        border-right: 1px solid #888;
+        border-bottom: 1px solid #888;
+        z-index: 10;
+
+        .dummy {
+          margin-top: 100%;
+        }
+
+        .minion-image {
+          position: absolute;
+          width: 80%;
+          height: 80%;
+          top: 5%;
+          left: 8%;
+        }
+
+        .available-count {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          padding-top: 57.5%;
+          font-size: 2.6em;
+          box-sizing: border-box;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          color: white;
+        }
+        &.unavailable {
+          opacity: 0.3;
+
+          .minion-image {
+            opacity: 0.5;
+          }
+        }
+
+        .highlight-overlay {
+          z-index: 15;
+          position: absolute;
+          width: 80%;
+          height: 80%;
+          top: 10%;
+          left: 10%;
+          background-color: white;
+          .blink;
+        }
+
+      }
+      .selected {
+        background-color: #666;
+      }
+
+    }
+
+  }
+}
+
+.game-modal {
+  -webkit-text-size-adjust: 100%;
+  position: absolute;
+  width: 384px;
+  height: 273px;
+  padding: 40px;
+  box-sizing: border-box;
+  background-color: #222;
+  background-size: 100% auto;
+  top: 50%;
+  margin-top: -136px;
+  left: 50%;
+  margin-left: -192px;
+  color: white;
+  z-index: 20;
+  text-align: center;
+
+  .title {
+    font-size: 2.5em;
+    text-align: center;
+    padding-bottom: 1.5%;
+  }
+
+  .text {
+    font-size: 1.333em;
+    line-height: 120%;
+
+    .player-loading {
+      font-weight: bold;
+
+      .name {
+        float: left;
+        width: 70%;
+        height: 20px;
+        overflow: hidden;
+      }
+      .loaded {
+        float: left;
+        height: 20px;
+        width: 30%;
+      }
+      .ready {
+        color: #408140;
+      }
+      .loading {
+        color: #F5E42C;
+      }
+    }
+  }
+
+  .progress {
+    margin-bottom: 5px;
+  }
+
+  .btn, .btn-large {
+    height: 18.315%;
+    color: white;
+    border: 0;
+    box-shadow: none;
+    font-size: 1.5em;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .btn {
+    width: 26.042%;
+    background-color: #444;
+    border: 1px solid #666;
+    background-size: 100% auto;
+    padding: 1.7% 2.604% 3.663% 2.604%;
+  }
+
+  .btn-corner {
+    right: 10.416%;
+    bottom: 14.652%;
+    position: absolute;
+    padding-top: 4.4%;
+  }
+
+  .btn-large {
+    width: 71.6155%;
+    background-color: #444;
+    border: 1px solid #666;
+    background-size: 100% auto;
+  }
+}
+
+@media (max-height: 639px)  {
+  #game {
+    #game-wrapper {
+      #top-sidebar {
+        height: 7.5%;
+        top: 1%;
+          .info {
+            height: 100%;
+            width: 50%;
+      
+            .gold, .income, .souls, .time {
+              width: 23%;
+              margin-right: 2%;
+            }
+          }
+      }
+    }
+  }
+  
+  body {
+    font-size: 10.8px;
+  }
+}
+
+@media (max-height: 575px)  {
+  body {
+    font-size: 9.6px;
+  }
+}
+
+@media (max-height: 511px)  {
+  body {
+    font-size: 8.4px;
+  }
+}
+
+@media (max-height: 447px)  {
+  body {
+    font-size: 7.2px;
+  }
+}
+
+@media (max-height: 383px)  {
+  body {
+    font-size: 6px;
+  }
+}
+
+@media (max-height: 319px)  {
+  body {
+    font-size: 4.8px;
+  }
+}
+
+@media (max-height: 255px)  {
+  body {
+    font-size: 3.6px;
+  }
+}
+
+@media (max-height: 191px)  {
+  body {
+    font-size: 2.4px;
+  }
+}
+
+

@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h1>Match Found</h1>
+</div>
+<div class="modal-body align-center">
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{timeRemainingFraction}}" aria-valuemin="0" aria-valuemax="100" style="width: {{timeRemainingFraction}}%;"></div>
+    </div>
+    <div class="accepted" ng-show="accepted">
+        <p>Accepted. Waiting on others.</p>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn float-left" ng-click="accept()" ng-class="{active: accepted}">Accept</button>
+    <button class="btn float-right" ng-click="decline()" ng-show="!accepted">Decline</button>
+</div>

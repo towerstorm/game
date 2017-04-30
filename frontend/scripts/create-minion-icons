@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd ../assets/img/minions
+for file in ./*.png; do
+    read -r filename width height <<< $( convert $file -format "%f %w %h" info:) 
+    imageSize=$(echo "sqrt(($width * $height) / 40)" | bc -l)
+    convert $file -crop $(echo "$imageSize")x$(echo "$imageSize")+0+0 ../minion-icons/$file 
+done

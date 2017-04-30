@@ -1,0 +1,38 @@
+<dev-menu></dev-menu>
+<div class="container" ng-init="viewLoaded()">
+    <div class="row">
+        <div class="col-lg-3">
+            <player-list team="1"></player-list>
+            <player-list team="3"></player-list>
+        </div>
+        <div class="col-lg-6">
+            <div ng-show="isInStateLobby()">
+                <map-selector></map-selector> 
+                <div class="row" ng-show="isHost()">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="startGame()">Start Game</button>
+                </div>
+            </div>
+            <div ng-show="isInStateSelection()">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <race-selector></race-selector> 
+                    </div>
+                    <div class="col-lg-6">
+                        <minion-selector></minion-selector>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 p-3 mt-2">
+                        <race-information></race-information>
+                        <minion-information></race-information>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary btn-lg btn-block mt-2" ng-click="lockIn()">Lock In</button>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <player-list team="2"></player-list>
+            <player-list team="4"></player-list>
+        </div>
+    </div>
+</div>

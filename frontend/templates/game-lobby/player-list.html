@@ -1,0 +1,4 @@
+<div class="card card-inverse card-{{colorClass}} mb-3">
+  <player-panel player="{{player}}" state="{{state}}" ng-repeat="player in players"></player-panel>
+  <div class="card-block" ng-click="selectTeam(team)" ng-show="isInLobby()">JOIN</div>
+</div>

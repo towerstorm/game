@@ -1,0 +1,20 @@
+<div id="game-invites-list" role="navigation" ng-show="invites.length">
+    <div class="well">
+        <div class="game-invites">
+            <h4>Game Invites</h4>
+            <ul class="list-group">
+                <li class="game-invite list-group-item" ng-repeat="invite in invites">
+                    <div class="well">
+                        {{ invite.username }} invited you to a game. PvP on evergreen hills.
+                        <a href="" class="pull-right" ng-click="declineInvitation(invite.id)">
+                            <i class="fa fa-times fa-fw text-danger"></i>
+                        </a>
+                        <a href="" class="pull-right" ng-click="acceptInvitation(invite.id)">
+                            <i class="fa fa-check fa-fw text-success"></i>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

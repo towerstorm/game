@@ -1,0 +1,22 @@
+ <div class="info">
+    <div class="gold" title="Your Gold">
+        <div class="highlight-overlay" ng-show="highlighted.gold != null"></div>
+        <div class="text">{{ gold }}</div>
+        <div class="caption">Gold</div>
+    </div>
+    <div class="income" title="Your Income (Gold per second)">
+        <div class="highlight-overlay" ng-show="highlighted.income != null"></div>
+        <div class="text">{{ income }}</div>
+        <div class="caption">Income</div>
+    </div>
+    <div class="souls" title="Your Souls">
+        <div class="highlight-overlay" ng-show="highlighted.souls != null"></div>
+        <div class="text">{{ souls }}</div>
+        <div class="caption">Souls</div>
+    </div>
+    <div class="time" title="Game Time">
+        <div class="highlight-overlay" ng-show="highlighted.time != null"></div>
+        <div class="text">{{ timeFormatted }}</div>
+        <div class="caption">Time</div>
+    </div>
+ </div>

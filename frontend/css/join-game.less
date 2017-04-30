@@ -1,0 +1,52 @@
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.join-game {
+  .games-list {
+    width: 50%;
+    margin: 0 auto;
+
+    .game-info {
+      height: 60px;
+      font-size: 32px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-bottom: 2px dotted #aaa;
+
+      .name {
+        width: 50%;
+        float: left;
+        color: #F5E42C;
+        padding-top: 10px;
+      }
+
+      .join-button {
+        .unselectable;
+
+        width: 265px;
+        height: 41px;
+        margin: 10px auto 0px auto;
+        padding-top: 10px;
+        padding-right: 10px;
+        background: transparent url("/img/start-button.png") no-repeat center center;
+        text-align: center;
+        font-size: 30px;
+        color: #F5E42C;
+        cursor: pointer;
+        float: right;
+
+        &.locked, &.disabled {
+          background: transparent url("/img/start-button-locked.png") no-repeat center center;
+        }
+      }
+
+    }
+  }
+}

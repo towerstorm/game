@@ -1,0 +1,27 @@
+<div class="card mb-2">
+    <div class="card-header">Select Map</div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" ng-class="{active: map.id == selectedMap.id}" ng-repeat="map in maps" ng-click="selectMap(map.id)">{{map.name}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6" ng-show="selectedMap">
+            <img src="/img/maps/{{selectedMap.image}}" alt="Map" class="card-img-top" style="height: 10rem; width: 100%">
+        </div>
+    </div>
+</div>
+<div class="card mb-3" ng-show="selectedMap">
+    <div class="row p-3">
+        <div class="col-md-9">
+            <h6>{{selectedMap.name}}</h6>
+            <p>{{selectedMap.description}}</p>
+        </div>
+        <div class="col-md-3">
+            <h6>{{selectedMap.teams}} Teams</h6>
+            <h6>{{selectedMap.minPlayers}} - {{selectedMap.maxPlayers}} Players</h6>
+        </div>
+    </div>
+</div>

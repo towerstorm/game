@@ -1,0 +1,44 @@
+<div id="endScreen" ng-show="gameEndResult != null">
+    <h1>{{gameEndResult}}!</h1>
+    <button type='button' id="continueButton" ng-click="loadGameSummary()" class="btn btn-primary btn-large">Continue</button>
+</div>
+<loading-screen></loading-screen>
+<div class="space-tile">
+    <div id="game" ng-show="loaded && started">
+        <div id="game-wrapper" ng-init="viewLoaded()" style="">
+            <div id="top-sidebar">
+                <div player-info class="full-height"></div>
+            </div>
+            <div id="left-sidebar" style="width: {{ sidebar.width }}px; margin-top: {{ sidebar.offset.y }}px; margin-left: {{ sidebar.offset.x }}px">
+                <div ng-show="player.team % 2 == 1">
+                    <div tower-buttons></div>
+                </div>
+                <div ng-show="player.team % 2 == 0">
+                    <div minion-buttons ></div>
+                </div>
+            </div>
+            <div id="playField" ng-show="backgroundUrl && backgroundUrl.length > 0">
+                <div class='play-field'>
+                    <canvas id="canvas" ng-right-click="unpickAll()" style=""></canvas>
+                    <div class="helper-text" ng-show="helperText != null">
+                        <div class="text">{{ helperText }}</div>
+                    </div>
+                    <div info-panel></div>
+                    <div tower-panel></div>
+                    <!--<div class="chat-wrapper" ng-class="{'left-side': player.team == 1, 'right-side': player.team == 0}">
+                        <chat-room id="{{ chatRoomId }}" prefix="[team]" single-message-mode="true"></chat-room>
+                    </div>-->
+                </div>
+            </div>
+            <div id="right-sidebar" style="width: {{ sidebar.width }}px; margin-top: {{ sidebar.offset.y }}px; margin-right: {{ sidebar.offset.x }}px;">
+                <div ng-show="player.team % 2 == 0">
+                    <div tower-buttons></div>
+                </div>
+                <div ng-show="player.team % 2 == 1">
+                    <div minion-buttons ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

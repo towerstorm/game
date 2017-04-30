@@ -1,0 +1,42 @@
+<div class="tower-panel-wrapper" ng-show="towerPanel.visible" style="width: {{ towerPanel.width }}px; height: {{ towerPanel.height }}px;">
+    <div id="towerPanel" class="tower-panel">
+        <div class="close-left" ng-click="deselectTower()"></div>
+        <div class="close-right" ng-click="deselectTower()"></div>
+        <div class="title">{{ towerPanel.title }}</div>
+        <div class="text">
+            <!--TODO: Turn this into a directive and manually do each stat so I can add bonus to end of damage etc-->
+            <div ng-repeat="(name, value) in towerPanel.stats">
+                {{name}}:
+                <span ng-show="!value.length">{{value}}</span>
+                <span ng-show="value.length == 1">{{value[0]}}</span>
+            <span ng-show="value.length > 1" ng-repeat="(idx, num) in value">
+                <span ng-show="idx > 0"> / </span>
+                <span ng-class="{current: idx == towerPanel.level}">
+                    {{num}}
+                </span>
+            </span>
+            </div>
+            <div class="modifiers">
+                <div class="modifier" ng-repeat="modifier in towerPanel.modifiers">{{modifier}}</div>
+            </div>
+            <div class="auras">
+                <div class="aura" ng-repeat="aura in towerPanel.auras">{{aura}}</div>
+            </div>
+            <div class="btn-tower btn-upgrade" ng-click="clickUpgradeTower()" ng-show="towerPanel.upgradeCost > 0 && showButtons">
+                <div class="highlight-overlay" ng-show="highlighted.upgradeButton != null"></div>
+                <div class="symbol"></div>
+                <div class="text">
+                    ${{towerPanel.upgradeCost}}
+                </div>
+            </div>
+            <div class="btn-tower btn-sell" ng-click="clickSellTower()" ng-show="towerPanel.sellValue > 0 && highlighted.upgradeButton == null && showButtons">
+                <div class="text">
+                    ${{towerPanel.sellValue}}
+                </div>
+            </div>
+        </div>
+        <button class="btn" ng-show="towerPanel.buttonText" ng-click="clickInfoPanelButton()">{{ towerPanel.buttonText }}</button>
+    </div>
+</div>
+
+

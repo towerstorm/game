@@ -1,0 +1,5 @@
+/*.sublime-project
+/*.sublime-workspace
+/logs/HeapSnapshots/*.heapsnapshot
+/.idea
+/node_modules/

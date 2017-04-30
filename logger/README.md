@@ -1,0 +1,1 @@
+To be included for all logging, so prod logs can be sent to multiple sources and changed easily.

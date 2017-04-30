@@ -1,0 +1,9 @@
+/*.sublime-project
+/*.sublime-workspace
+/logs/HeapSnapshots/*.heapsnapshot
+/public/js/jquery.js
+/node_modules
+/build/lib
+/build/mobile
+/build/*
+/.idea

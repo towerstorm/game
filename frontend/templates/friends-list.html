@@ -1,0 +1,56 @@
+<div id="friends-list" role="navigation">
+    <div class="well">
+        <div class="friends">
+            <h4>Friends</h4>
+            <div ng-show="!userIsRegistered">
+                You must be registered to add friends. Register by clicking the button in the top right.
+            </div>
+            <div ng-show="userIsRegistered">
+                <ul class="list-group" ng-show="friends.length">
+                    <li class="friend list-group-item" ng-repeat="friend in friends">
+                        <span class="label label-danger pull-right" ng-show="onlineFriends[friend.id] == null">Offline</span>
+                        <a href="" class="pull-right" ng-click="startChat(friend.id, friend.username)" ng-show="onlineFriends[friend.id] != null">
+                            <span class="label label-success pull-right">Online</span>
+                            <i class="fa fa-comments fa-fw text-"></i>
+                        </a>
+                        {{ friend.username }}
+                    </li>
+                </ul>
+                <span ng-show="!friends.length">
+                    No friends yet, add one below.
+                </span>
+            </div>
+        </div>
+        <div class="friend-requests" ng-show="userIsRegistered">
+            <h4>Friend Requests</h4>
+            <ul class="list-group" ng-show="friendRequests.length">
+                <li class="friend-request list-group-item" ng-repeat="friendRequest in friendRequests">
+                    {{ friendRequest.username }}
+                    <a href="" class="pull-right" ng-click="declineFriendRequest(friendRequest.id)">
+                        <i class="fa fa-times fa-fw text-danger"></i>
+                    </a>
+                    <a href="" class="pull-right" ng-click="acceptFriendRequest(friendRequest.id)">
+                        <i class="fa fa-check fa-fw text-success"></i>
+                    </a>
+                </li>
+            </ul>
+            <span ng-show="!friendRequests.length">
+                No friend requests
+            </span>
+        </div>
+        <div class="add-friend" ng-show="userIsRegistered">
+            <div class="form-group">
+                <form ng-submit="addFriend()">
+                    <label class="control-label">Add Friend</label>
+                    <div class="error" ng-show="addFriendError">Error: {{ addFriendError }}</div>
+                    <div class="input-group">
+                        <input type="text" name="username" id="username" ng-model="friendName" class="form-control">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button" ng-click="addFriend()" ng-disabled="addFriendButtonDisabled">{{addFriendButtonText}}</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

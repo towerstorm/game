@@ -1,0 +1,53 @@
+<div friends-list ng-hide="1"></div>
+<div class="lobby" ng-init="viewLoaded()">
+    <div match-found></div>
+    <div class="container">
+        <div class="col-xs-18 col-sm-12">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 players-list">
+                    <h3>Players in lobby</h3>
+                    <li class="player list-group-item" ng-repeat="player in players">
+                        {{ player.username }}
+                    </li>
+                    <li class="player list-group-item" ng-repeat="slot in openSlots">
+                        (OPEN)
+                    </li>
+                </div>
+                <div class="col-xs-6 col-sm-4 friends-list" ng-show="isHost">
+                    <h3>Online Friends</h3>
+                    <table class="table">
+                        <thead></thead>
+                        <tbody>
+                            <tr class="friend" ng-repeat="friend in friends" ng-class="{active: friend.invited, danger: friend.declined, success: friend.inGame}">
+                                <td ng-show="onlineFriends[friend.id] != null">
+                                    {{ friend.username }}
+                                    <a href="" class="pull-right" ng-click="startChat(friend.id, friend.username)">
+                                        <i class="fa fa-comments fa-fw text-"></i>
+                                    </a>
+                                    <a href="" class="pull-right" ng-click="invitePlayer(friend.id)" ng-show="!friend.invited && !friend.declined && !friend.inGame">
+                                        <i class="fa fa-envelope fa-fw text-success"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-18 col-sm-12 chat">
+                    <h3>Chat</h3>
+                    <div chat-room id="{{chatRoomId}}" ng-show="chatRoomId != null"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-18 col-sm-12">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" ng-show="isHost && !queuerId" ng-click="queue()">Find Game</button>
+                    <div class="finding-wrapper" ng-show="queuerId">
+                        <button type="button" class="btn btn-warning btn-lg btn-block disabled" ng-click="queue()">Finding Match ({{searchTime}})</button>
+                        <h6>Estimated Time: {{estimatedTimeFormatted}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

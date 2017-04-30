@@ -1,0 +1,28 @@
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Tower Storm</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav navbar-right" ng-show="userIsRegistered">
+                <li class="username">
+                    <p class="navbar-text">{{user.username}}</p>
+                </li>
+                <li class="level">
+                    <p class="navbar-text">Elo rating: {{user.elo}}</p>
+                </li>
+                <li class="storm-points">
+                    <p class="navbar-text">{{user.stormPoints}}sp</p>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-show="!userIsRegistered">
+                <li class="username">
+                    <p class="navbar-text">{{user.username}}</p>
+                </li>
+                <li>
+                    <a class="login-btn" ng-click="showLoginScreen()">Login / Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

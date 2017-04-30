@@ -1,0 +1,16 @@
+<form name="chooseUsernameForm">
+<div class="modal-header">
+    <h1>Choose Username</h1>
+</div>
+<div class="modal-body">
+    <div class="error" ng-show="error != null">{{error}}</div>
+    <p>Please choose your username, this is what other players will know you by:</p>
+    <div class="form-group">
+        <div class="control-label" for="username">Username</div>
+        <input type="text" class="form-control" name="username" id="username" ng-model="newUser.name" required />
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn float-right" id="saveUsername" ng-click="saveUsername()" ng-disabled="chooseUsernameForm.$invalid">Done</button>
+</div>
+</form>

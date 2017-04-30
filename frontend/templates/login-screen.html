@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="hideLoginScreen()">&times;</button>
+    <h1 class="modal-title">Login / Register</h1>
+</div>
+<div class="modal-body">
+    <div class="validating" ng-show="loginScreenValidating">
+        <p>Please wait... validating login</p>
+    </div>
+    <div ng-show="!loginScreenValidating">
+        <div class="error" ng-show="loginFailed">
+            <p>Login failed. Please try again.</p>
+        </div>
+        <div ng-show="!userIsRegistered">
+            <p>You can login to Tower Storm with any of the following sites. We will <span class="underline">never</span> post anything to your wall / feed without you explicitly asking us to.</p>
+            <div class="social-logins">
+                <a href="javascript:void(0)" ng-click="loginWithProvider('facebook')" class="btn btn-block btn-social btn-lg btn-facebook">
+                    <i class="fa fa-facebook"></i>
+                    Sign in with Facebook
+                </a>
+                <a href="javascript:void(0)" ng-click="loginWithProvider('google')" class="btn btn-block btn-social btn-lg btn-google-plus">
+                    <i class="fa fa-google-plus"></i>
+                    Sign in with Google Plus
+                </a>
+                <!--
+                Not working for now, need to fix reddit oauth callback param problem.
+                <a href="javascript:void(0)" ng-click="loginWithProvider('reddit')" class="btn btn-block btn-social btn-lg btn-reddit">
+                    <i class="fa fa-reddit"></i>
+                    Sign in with Reddit
+                </a>
+                -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn" ng-click="hideLoginScreen()">Cancel</button>
+</div>

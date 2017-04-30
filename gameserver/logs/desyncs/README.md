@@ -1,0 +1,1 @@
+This is where client and server reported desyncs go so the game state hashes can be compared to figure out the ulimate cause of the desyncs.

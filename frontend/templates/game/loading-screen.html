@@ -1,0 +1,16 @@
+<div id="loadingScreen" class="game-modal" ng-show="!started || !loaded">
+    <div class="title" ng-show="!assetsLoaded || !playersLoaded || !syncDone">Loading...</div>
+    <div class="title" ng-show="assetsLoaded && playersLoaded && syncDone">Waiting on players...</div>
+    <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{totalLoadProgress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{totalLoadProgress}}%;">
+            {{totalLoadProgress}}%
+        </div>
+    </div>
+    <div class="text">
+        <div class="player-loading" ng-repeat="player in players">
+            <div class="name">{{player.name}}</div>
+            <div class="loaded ready" ng-show="player.loaded">Ready</div>
+            <div class="loaded loading" ng-show="!player.loaded">Loading...</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,441 @@
+
+
+html,body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 12pt;
+  background-color: #111111;
+  height: 100%
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.highlight (@padding: 0%) {
+  position: absolute;
+  height: 100% - @padding * 2;
+  width: 100% - @padding * 2;
+  top: @padding;
+  left: @padding;
+  background-color: white;
+  opacity: 0.4;
+}
+
+.darken (@padding: 0%) {
+  position: absolute;
+  height: 100% - @padding * 2;
+  width: 100% - @padding * 2;
+  top: @padding;
+  left: @padding;
+  background-color: black;
+  opacity: 0.4;
+}
+
+#content {
+  height: 100%;
+}
+
+
+.rounded-corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+.glow (@radius: 55px) {
+  -webkit-box-shadow:0 0 @radius #ffffdd;
+  -moz-box-shadow: 0 0 @radius #ffffdd;
+  box-shadow:0 0 @radius #ffffdd;
+}
+
+.lobby-container {
+  margin: 0px auto;
+  padding: 0;
+  width: 960px;
+  height: 640px;
+  background: transparent url("/img/bg.png") no-repeat center center;
+  color: white;
+
+  .top-menu {
+    .back-button {
+
+    }
+  }
+
+  .invite-friends-container {
+    width: 800px;
+    margin: 10px auto;
+    height: 50px;
+    line-height: 50px;
+
+    .share-link-text {
+      width: 342px;
+      height: 24px;
+      margin-top: 16px;
+      float: left;
+      background: transparent url("/img/share-link-text.png") no-repeat left center;
+    }
+
+    .invite-link {
+      border: 0;
+      outline: 0;
+      width: 440px;
+      height: 50px;
+      float: left;
+      margin-left: 8px;
+      background: transparent url("/img/invite-link-bg.png") no-repeat left center;
+      text-align: center;
+      line-height: 50px;
+    }
+
+  }
+
+  .countdown-container {
+    width: 800px;
+    margin: 10px auto;
+    height: 50px;
+
+    .countdown-timer {
+      line-height: 45px;
+      font-size: 32px;
+      width: 152px;
+      height: 54px;
+      background: transparent url("/img/button-tower.png") no-repeat left center;
+      background-size: 100% auto;
+      text-align: center;
+      margin: 0px auto;
+    }
+  }
+
+  .players-container {
+    width: 800px;
+    margin: 10px auto 0px auto;
+    .unselectable;
+
+    .player-team {
+      float: left;
+      width: 400px;
+
+      .player {
+        position: relative;
+        width: 400px;
+        height: 68px;
+
+        &.wide {
+
+          &.team-0 {
+            background: transparent url("/img/player-wide-red.png") no-repeat left center;
+          }
+          &.team-1 {
+            background: transparent url("/img/player-wide-blue.png") no-repeat left center;
+          }
+
+          .name-area {
+            width: 100%;
+
+            .player-name, .join-team {
+              margin-left: 80px;
+              width: 70%;
+            }
+          }
+        }
+
+        .name-area {
+          width: 80%;
+          height: 68px;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          cursor: pointer;
+
+
+          .race-icon {
+            .rounded-corners(8px);
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            margin-left: 23px;
+            margin-top: 15px;
+          }
+
+          .player-name, .join-team {
+            font-size: 30px;
+            position: absolute;
+            margin-left: 80px;
+            margin-top: 15px;
+            width: 56.25%;
+            overflow: hidden;
+            padding-left: 5px;
+            height: 30px;
+
+            &.self {
+              color: #F5E42C;
+            }
+            &.ready {
+              color: #50a350;
+            }
+
+          }
+
+          .join-team {
+            text-align: center;
+            color: #50a350;
+          }
+        }
+
+        &.team-0 {
+          background: transparent url("/img/player-red.png") no-repeat left center;
+          float: left;
+        }
+        &.team-1 {
+          background: transparent url("/img/player-blue.png") no-repeat left center;
+          float: right;
+        }
+
+        .add-bot {
+          background: transparent url("/img/add-bot.png") no-repeat center center;
+          position: absolute;
+          right: 20px;
+          top: 5px;
+          width: 56px;
+          height: 55px;
+          cursor: pointer;
+        }
+
+        .kick-player {
+          background: transparent url("/img/kick.png") no-repeat center center;
+          position: absolute;
+          right: 20px;
+          top: 5px;
+          width: 58px;
+          height: 56px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .race-picker-container {
+    width: 800px;
+    margin: 10px auto;
+    .unselectable;
+
+    .race-picker {
+      width: 300px;
+      height: 294px;
+      padding: 20px;
+      float: left;
+      background: transparent url("/img/race-picker.png") no-repeat center center;
+      text-align: center;
+
+      h2 {
+        margin: 0
+      }
+
+      .race-icon-wrap {
+        background: transparent url("/img/race-bg.png") no-repeat center center;
+        width: 54px;
+        height: 54px;
+        float: left;
+        cursor: pointer;
+        padding: 4px;
+        margin: 5px;
+        position: relative;
+
+        .selected-overlay {
+          margin-left: -1px;
+          margin-top: -1px;
+          .highlight(10%);
+        }
+
+        .chosen-overlay {
+          margin-left: -1px;
+          margin-top: -1px;
+          .darken(10%);
+        }
+
+
+        .race-icon {
+          margin-left: -1px;
+          margin-top: -1px;
+          width: 46px;
+          height: 46px;
+        }
+
+        .race-icon-border {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 54px;
+          height: 54px;
+          background: transparent url("/img/race-icon-border.png") no-repeat center center;
+          background-size: 100% auto;
+        }
+      }
+    }
+    .race-details {
+      width: 480px;
+      height: 294px;
+      float: left;
+      margin-left: 20px;
+      padding: 35px;
+      background: transparent url("/img/race-details.png") no-repeat center center;
+
+      h2 {
+        text-align: center;
+        margin: 0;
+      }
+
+      .tower-details {
+        width: 205px;
+        float: left;
+        font-size: 12px;
+        line-height: 1.2;
+        margin-top: 10px;
+
+        .tower-icon-wrap {
+          background: transparent url("/img/race-bg.png") no-repeat center center;
+          width: 54px;
+          height: 54px;
+          float: left;
+          padding: 4px;
+          margin-right: 5px;
+
+          .tower-icon {
+            width: 46px;
+            height: 46px;
+          }
+
+        }
+
+        .tower-name {
+          font-weight: bold;
+          width: 145px;
+          float: right;
+        }
+
+        .tower-description {
+          width: 145px;
+          float: right;
+
+        }
+      }
+    }
+  }
+
+  .start-button {
+    .unselectable;
+
+    width: 275px;
+    height: 51px;
+    margin: 10px auto 0px auto;
+    padding-top: 10px;
+    padding-right: 10px;
+    background: transparent url("/img/start-button.png") no-repeat center center;
+    text-align: center;
+    font-size: 30px;
+    color: #F5E42C;
+    cursor: pointer;
+
+    &.locked, &.disabled {
+      background: transparent url("/img/start-button-locked.png") no-repeat center center;
+    }
+  }
+
+}
+
+@media (max-width: 959px){
+  .lobby-container {
+    width: 100%;
+  }
+}
+@media(max-width: 799px) {
+  .lobby-container {
+    .invite-friends-container {
+      width: 100%;
+      display: none;
+    }
+
+
+    .players-container {
+      width: 100%;
+      margin: 10px auto 0px auto;
+      .player-team {
+        float: left;
+        width: 240px;
+
+        .player {
+          position: relative;
+          width: 240px;
+          height: 68px;
+
+          &.wide {
+            &.team-0 {
+              background: transparent url("/img/player-mob-wide-red.png") no-repeat left center;
+            }
+            &.team-1 {
+              background: transparent url("/img/player-mob-wide-blue.png") no-repeat left center;
+            }
+
+          }
+
+          .name-area {
+            .player-name, .join-team {
+              font-size: 24px;
+              margin-left: 72px;
+              margin-top: 22px;
+              height: 24px;
+              width: 100px;
+            }
+          }
+
+
+          &.team-0 {
+            background: transparent url("/img/player-mob-red.png") no-repeat left center;
+            float: left;
+          }
+          &.team-1 {
+            background: transparent url("/img/player-mob-blue.png") no-repeat left center;
+            float: right;
+          }
+
+          .add-bot, .kick-player {
+            right: 5px;
+            width: 40px;
+            height: 100%;
+          }
+
+          .add-bot {
+            background: transparent url("/img/add-bot-small.png") no-repeat 0px 10px;
+          }
+
+          .kick-player {
+            background: transparent url("/img/kick-small.png") no-repeat 0px 10px;
+          }
+        }
+      }
+    }
+
+    .race-picker-container {
+      width: 100%;
+      .race-picker {
+        width: 440px;
+        height: 115px;
+        padding: 20px;
+        background: transparent url("/img/race-picker-wide.png") no-repeat center center;
+      }
+      .race-details {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+

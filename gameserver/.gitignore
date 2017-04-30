@@ -1,0 +1,15 @@
+/*.sublime-project
+/*.sublime-workspace
+/logs/HeapSnapshots/*.heapsnapshot
+/public/js/jquery.js
+/node_modules/
+/logs/**/*.log
+v8.log
+/newrelic_agent.log
+/logs/dev-log.log
+/build/static/
+/build/
+/logs/profiling
+/.idea
+/server.js
+/node_modules/.bin

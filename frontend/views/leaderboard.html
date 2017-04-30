@@ -1,0 +1,32 @@
+<div class="home" ng-init="viewLoaded()">
+    <div class="container join-game">
+        <h1 class="cufon">Leaderboard</h1>
+        <div style="text-align: center" ng-show="!isRegistered">
+            <h4>Only registered users will appear here, to register click the link in the top right.</h4>
+        </div>
+        <div class="row">
+            <table class="table table-striped table-bordered table-hover" id="leaderboard">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Elo rating</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="player in players">
+                    <td>{{player.position}}</td>
+                    <td>{{player.username}}</td>
+                    <td>{{player.elo}}</td>
+                    <td>{{player.wins}}</td>
+                    <td>{{player.losses}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="loader" ng-show="!players.length"></div>
+            <pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()" class="float-right"></pagination>
+        </div>
+    </div>
+</div>

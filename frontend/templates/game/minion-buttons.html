@@ -1,0 +1,9 @@
+<div id="minionButtons" class="minion-buttons" style="width: {{ sidebar.width }}px;">
+    <div class="minion-button-wrapper" ng-repeat="minion in minionButtons" >
+        <div class="minion {{ minion.minionType }}" style="margin-top: {{ sidebar.minionSpacing }}px" ng-class="{selected: pickedMinion==minion.minionType, unavailable: !buttonStates.canSendMinion[minion.minionType], invisible: !buttonStates.canSeeMinionButton[minion.minionType]}" ng-click="clickPickMinion(minion.minionType)">
+            <div class="dummy"></div>
+            <div class="highlight-overlay" ng-show="highlighted.minion == minion.minionType"></div>
+            <div class="minion-image" style="background: transparent url({{minion.url}}) no-repeat center center; background-size: 100% auto;"></div>
+        </div>
+    </div>
+</div>

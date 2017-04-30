@@ -1,0 +1,25 @@
+doctype html
+html(ng-app="towerstorm")
+    head
+        title= "Tower Storm"
+        meta(name="apple-mobile-web-app-capable", content="yes")
+        meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+        link(rel='shortcut icon', type='image/x-icon', href='/img/favicon.ico')
+
+        script(src='config/client.js')
+        script(src='dist/vendor.js')
+        script(src='dist/frontend.js')
+        script(src='dist/pixi.js')
+        script(src='dist/game.js')
+
+        link(rel="stylesheet",type="text/css",href="/css/frontend.css")
+body
+    div(nav-bar='', ng-show='showNav')
+    div(login-screen='')
+    div(choose-username='')
+    div(creating-lobby='')
+    div#wrapper
+        div#content(ng-view='')
+
+
