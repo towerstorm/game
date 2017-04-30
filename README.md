@@ -14,7 +14,7 @@ Tower Storm is completely browser based and making your own modifications is as 
 
 ## Getting Started
 
-You can either create a copy of this project on [Cloud9](c9.io) or clone these files to a server or your computer and run from there. 
+You can either clone this project on [Cloud9](https://c9.io) or clone these files to a server or your computer and run from there. 
 
 ## Pre-requisites
 
