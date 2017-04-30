@@ -6,9 +6,11 @@ v0.1.0
 
 ## Overview
 
-Tower Storm is a Multiplayer Tower Attack and Defense development kit that makes it easy for you to build the Tower Defense game you've always wanted to play. Have you played Tower Defense games in the past and felt they always looked the same? Just a few basic towers that shoot, maybe one that does AOE damage and that's it. Or perhaps you are a fan of the Tower Defense maps in Warcraft 3 or Starcraft with their amazing depth and variety, and want more of that. 
+Tower Storm is a Multiplayer Tower Defense game development kit. Making it easy to create your own TD Game or just Maps / Towers / Minions / Gameplay / Abilities that you can play with friends, with little to no programming required.
 
-With Tower Storm you can go nuts creating the awesome ideas you've had, and it's completely free and open source. 
+It's inspired by the TD maps in Warcraft 3 / Starcraft with their amazing depth and variety. But those games are old, not cross platform, hard to modify, and take a while to setup and get running. So Tower Storm aims to solve those issues and bring more creativity and fun back to the genre. 
+
+Tower Storm is completely browser based and making your own modifications is as simple as changing some lines in a JSON file. Then to play your mod with friends just run the game and send them a link. 
 
 ## Getting Started
 
