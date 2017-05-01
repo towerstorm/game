@@ -1,4 +1,6 @@
 MinionSelectorDirective = ($rootScope) ->
+  mainPlayerId = null
+  
   details = 
     restrict: 'EA'
     templateUrl: 'templates/game-lobby/minion-selector.html'
@@ -7,6 +9,7 @@ MinionSelectorDirective = ($rootScope) ->
     link: (scope, element, attributes) ->
       scope.minions = []
       scope.selectedMinion = null
+      scope.chosenMinions = {}
       
       minions = window.config.minions
       for id, minion of minions 
@@ -25,6 +28,15 @@ MinionSelectorDirective = ($rootScope) ->
       scope.chooseMinion = (id) ->
         $rootScope.$broadcast('game.action.chooseMinion', id)
         
+      scope.$on 'game.settings.mainPlayerId', (e, pid) ->
+        mainPlayerId = pid
+        
+      scope.$on 'game.player.changed', (e, player) ->
+        if player.id == mainPlayerId
+          scope.chosenMinions = {}
+          player.minions.forEach((id) -> scope.chosenMinions[id] = id) 
+          
+          
         
   return details
       

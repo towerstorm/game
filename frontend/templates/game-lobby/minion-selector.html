@@ -1,6 +1,10 @@
-<div ng-repeat="minion in minions" data-title="{{minion.name}}" class="minion-icon-wrap {{minion.id}}" ng-click="selectMinion(minion.id)">
-    <img width="48" height="48" style="background: url('/img/minion-icons/{{minion.id}}.png'); background-size: 100% auto;" class="rounded float-left"></div>
-    <!--<div class="race-icon-border"></div>-->
-    <!--<div class="chosen-overlay" ng-show="takenRaces[getMainPlayer().team][race.id]"></div>-->
-    <!--<div class="selected-overlay" ng-show="getMainPlayer().race == race.id"></div>-->
+<div class="minion-selector unselectable">
+    <div ng-repeat="minion in minions" data-title="{{minion.name}}" class="minion-icon-wrap {{minion.id}}" ng-click="selectMinion(minion.id)">
+        <img width="48" height="48" style="background: url('/img/minion-icons/{{minion.id}}.png'); background-size: 100% auto;" class="rounded float-left minion-icon">
+        <div class="selected-overlay" ng-show="selectedMinion.id == minion.id">
+            <i class="fa fa-plus fa-3x" ng-hide="chosenMinions[minion.id]"></i> 
+        </div>
+        <div class="chosen-overlay" ng-show="chosenMinions[minion.id]"></div>
+    </div>
 </div>
+

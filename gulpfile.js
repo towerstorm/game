@@ -15,7 +15,8 @@ var runSequence = require("gulp-run-sequence");
 gulp.task("styles", function() {
     return gulp.src([
         "css/*.less",
-        "css/bootstrap.min.css"
+        "css/bootstrap.min.css",
+        "css/font-awesome.css"
         ], {cwd: "frontend"})
         .pipe(less())
         .pipe(minifyCss())

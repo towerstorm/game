@@ -61,6 +61,7 @@ GameLobbyCtrl = ($interval, $location, $modal, $scope, $rootScope, NetService, U
       console.log "Auth details: ", details
       AnalyticsService.track('Authenticated in game lobby', {name: details.name, race: details.race})
       $scope.playerId = details.id
+      $rootScope.$broadcast('game.settings.mainPlayerId', details.id)
       $scope.changeHost($scope.hostId)
       angular.extend($scope.getMainPlayer(), {name: details.name, race: details.race, team: 0})
       $scope.$apply()
@@ -68,15 +69,13 @@ GameLobbyCtrl = ($interval, $location, $modal, $scope, $rootScope, NetService, U
       console.log "Got game details of ", details
       $scope.gameDetailsUpdateTime = Date.now()
       for player in details.players
-        $rootScope.$broadcast('game.player.changeTeam', player)
+        $rootScope.$broadcast('game.player.changed', player)
       $rootScope.$broadcast('game.settings.changeMap', details.settings.mapId)
       for detail in ['name', 'state', 'players', 'timeRemaining', 'settings']
         if details[detail]?
           $scope[detail] = details[detail];
       $rootScope.$broadcast('game.settings.state', $scope.state)
       $scope.changeHost(details.hostId)
-      if $scope.getMainPlayer()?
-        $scope.actualPlayerTeam = parseInt($scope.getMainPlayer().team, 10);
       for team in [0, 1]
         lastTotalBots = $scope.totalBots[team]
         $scope.totalBots[team] = $scope.players.filter((player) -> return player.team == team && player.isBot).length

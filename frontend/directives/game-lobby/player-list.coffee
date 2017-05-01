@@ -11,7 +11,7 @@ PlayerListDirective = ($rootScope) ->
       
       scope.players = []
       
-      scope.$on 'game.player.changeTeam', (e, player) ->
+      scope.$on 'game.player.changed', (e, player) ->
         if scope.players.filter((p) -> p.id == player.id).length > 0
           scope.players = removePlayer(scope.players, player)
         if player.team == scope.team 
