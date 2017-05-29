@@ -49,6 +49,8 @@ You'll need to do the following steps to setup a production server for towerstor
 - Create a towerstorm user - `useradd -m towerstorm` 
 - Add towerstorm user to syslog group so they can write to /var/log - `usermod -a -G syslog towerstorm`
 - Setup environment variables mentioned in section below in the file `/etc/environment`
+- Make port 80 forward to port 8080 - `sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080`
+- Add the above line to your `/etc/rc.local` file to make it apply on system boot
 - Switch to the towerstorm user - `su - towerstorm`
 - Install node v4.x and npm v2 (I recommend using [nvm](https://github.com/creationix/nvm))
 - Git clone Towerstorm - `git clone https://github.com/towerstorm/game.git`
@@ -66,7 +68,7 @@ Logs will be written to /var/log/towerstorm.log
 
 Yes this is super hacky.
 
-- `sudo pkill nodejs`
+- `sudo pkill node`
 - `npm run prod`
 
 
