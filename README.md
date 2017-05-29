@@ -42,15 +42,31 @@ You can either clone this project on [Cloud9](https://c9.io) or clone these file
 
 ## Running in production
 
-You'll need to do the following steps to setup a production server for towerstorm
+You'll need to do the following steps to setup a production server for towerstorm (commands work for Ubuntu, other OS's may be different). This is pretty similar to development above because this doesn't have a proper build process yet.
 
-- Create a towerstorm user
-- Install node v4.x and npm v2 (I recommend using nvm)
-- Install git
-- Extract Tower Storm files to the towerstorm user home dir (or a game folder)
-- Add towerstorm user to syslog group so they can write to /var/log
-- Setup environment variables mentioned in section below
+- Switch to your root acount - `sudo -i`
+- Install git - `apt-get install git`
+- Create a towerstorm user - `useradd -m towerstorm` 
+- Add towerstorm user to syslog group so they can write to /var/log - `usermod -a -G syslog towerstorm`
+- Setup environment variables mentioned in section below in the file `/etc/environment`
+- Switch to the towerstorm user - `su - towerstorm`
+- Install node v4.x and npm v2 (I recommend using [nvm](https://github.com/creationix/nvm))
+- Git clone Towerstorm - `git clone https://github.com/towerstorm/game.git`
+- `cd game`
 - `./init.sh`
+- `npm install`
+- `npm install --global gulp-cli webpack`
+- `gulp dist`
+- `webpack`
+- `npm run prod`
+
+Logs will be written to /var/log/towerstorm.log
+
+## Restarting in Production
+
+Yes this is super hacky.
+
+- `sudo pkill nodejs`
 - `npm run prod`
 
 
