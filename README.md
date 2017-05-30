@@ -12,6 +12,10 @@ It's inspired by the TD maps in Warcraft 3 / Starcraft with their amazing depth 
 
 Tower Storm is completely browser based and making your own modifications is as simple as changing some lines in a JSON file. Then to play your mod with friends just run the game and send them a link. 
 
+## Have a play
+
+If you just want to check the game out you can play it at http://game.towerstorm.com
+
 ## Getting Started
 
 You can either clone this project on [Cloud9](https://c9.io) or clone these files to a server or your computer and run from there. 
