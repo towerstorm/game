@@ -11,7 +11,7 @@ if (config.datadog.api_key && config.datadog.app_keya) {
 
 var env  = process.env.NODE_ENV || "development";
 var hostname = require('os').hostname().replace(/.tsinternal.towerstorm.com/, '').replace(/.towerstorm.com/, '');
-var defaultTags = [hostname];
+var defaultTags = [];
 
 
 winston.init = function(appName) {
@@ -40,9 +40,7 @@ winston.getCustomTransports = function (appName, tags) {
   var tagsFormatted = tags != null ? '[' + tags.join('] [') + '] ' : '';
   tags = (tags || []).concat(defaultTags);
   var transports = [];
-  if (process.env.DEBUG) {
-    transports.push(new (winston.transports.Console)({label: tags.join('][')}))
-  }
+  transports.push(new (winston.transports.Console)({label: tags.join('][')}))
   return transports
 };
 

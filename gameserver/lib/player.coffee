@@ -12,7 +12,7 @@ tdb = require('../../database')
 rs = require 'randomstring'
 serverConfig = require 'config/gameserver'
 User = tdb.models.User
-log = require('../../logger')
+log = require('logger')
 _ = require("lodash");
 oberr = require("oberr");
 
@@ -96,7 +96,7 @@ class Player
 
   joinGame: (@game) =>
     @log = new (log.Logger)({
-      transports: log.getCustomTransports('gameserver', [@game.code])
+      transports: log.getCustomTransports('gameserver', [@game.get("code")])
     })
     @log.info("Player joining game")
     @disconnected = false;
@@ -162,7 +162,7 @@ class Player
   # each game when you join games. This will need to be fixed in the future when just the one
   # player object is thrown around with tokens. 
   disconnect: =>
-    @log.info("Player is disconnecting", {code: @game.code})
+    @log.info("Player " + @id + " is disconnecting")
     if @socket?
       @socket.disconnect()
     @disconnected = true

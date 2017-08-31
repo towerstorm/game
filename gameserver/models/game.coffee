@@ -16,7 +16,7 @@ connect = require 'connect'
 netconfig = require 'config/netconfig'
 bots = require './../lib/bots'
 async = require 'async'
-log = require('../../logger')
+log = require('logger')
 _ = require 'lodash'
 metrics = require('../lib/metrics')
 io = require("../lib/socket-io").io
@@ -506,11 +506,14 @@ class Game extends Model
   kickPlayer: (requestingPlayerId, playerId) =>
     @log.info("Kicking player")
     if @get('state') != config.states.lobby
+      @log.info("Cannot kick player, game is not in lobby state")
       return false;
     if requestingPlayerId != @hostId
+      @log.info("Cannot kick player, requesting player is not the host")
       return false
     player = @getPlayer(playerId)
     if !player
+      @log.info("Cannot kick player, player of id: ", playerId, " not found")
       return false
     player.kick();
     @deletePlayer(player)
