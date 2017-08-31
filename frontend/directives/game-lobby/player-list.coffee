@@ -8,14 +8,20 @@ PlayerListDirective = ($rootScope) ->
       scope.state = config.general.states.lobby;
       scope.team = parseInt(attributes.team, 10);
       scope.colorClass = getTeamColorClass(scope.team)
-      
       scope.players = []
+      
+      scope.$on 'game.player.deleted', (e, player) -> 
+        scope.players = removePlayer(scope.players, player)
       
       scope.$on 'game.player.changed', (e, player) ->
         if scope.players.filter((p) -> p.id == player.id).length > 0
           scope.players = removePlayer(scope.players, player)
         if player.team == scope.team 
           scope.players = addPlayer(scope.players, player)
+          
+      scope.kickPlayer = (player) ->
+        console.log("Player: ", player);
+        $rootScope.$broadcast('game.action.kickPlayer', player.id)
           
       scope.selectTeam = (team) ->
         $rootScope.$broadcast('game.action.selectTeam', team)

@@ -71,9 +71,10 @@ GameLobbyCtrl = ($interval, $location, $modal, $scope, $rootScope, NetService, U
       for player in details.players
         $rootScope.$broadcast('game.player.changed', player)
       $rootScope.$broadcast('game.settings.changeMap', details.settings.mapId)
-      for detail in ['name', 'state', 'players', 'timeRemaining', 'settings']
+      for detail in ['name', 'state', 'timeRemaining', 'settings']
         if details[detail]?
           $scope[detail] = details[detail];
+      playersUpdated(details.players);
       $rootScope.$broadcast('game.settings.state', $scope.state)
       $scope.changeHost(details.hostId)
       for team in [0, 1]
@@ -94,6 +95,19 @@ GameLobbyCtrl = ($interval, $location, $modal, $scope, $rootScope, NetService, U
     $scope.socket.on config.netMsg.game.didNotConnect, ->
       $scope.showError "didNotConnect", ->
         $scope.goHome()
+  
+  playersUpdated = (players) ->
+    playerIds = {}
+    players.forEach((p) -> playerIds[p.id] = p)
+    $scope.players.forEach((p) -> 
+      if !playerIds[p.id]
+        $rootScope.$broadcast("game.player.deleted", p)
+    )
+    $scope.players = players;
+        
+    
+      
+    
 
   $scope.bindDispatcher = ->
     $scope.$on 'user.updated', ->
@@ -195,6 +209,16 @@ GameLobbyCtrl = ($interval, $location, $modal, $scope, $rootScope, NetService, U
     $scope.getMainPlayer().minions.push(minionId)
     $scope.updateValue($scope.playerId, "minions")
     
+  $scope.$on 'game.action.kickPlayer', (e, playerId) ->
+    kickPlayer(playerId);
+    
+  kickPlayer = (playerId) ->
+    if !$scope.isHost()
+      return false
+    if playerId == $scope.playerId
+      return false
+    $scope.socket.emit config.netMsg.game.kickPlayer, playerId
+    
   $scope.updateValue = (playerId, name) ->
     player = $scope.getPlayer(playerId)
     if !player?
@@ -233,13 +257,6 @@ GameLobbyCtrl = ($interval, $location, $modal, $scope, $rootScope, NetService, U
     console.error("Failed to add bot, details is: ", details)
     $scope.showError('botAddFailed')
     $scope.tempBots = [0, 0]
-
-  $scope.kickPlayer = (playerId) ->
-    if !$scope.isHost()
-      return false
-    if playerId == $scope.playerId
-      return false
-    $scope.socket.emit config.netMsg.game.kickPlayer, playerId
 
   $scope.updateSettings = ->
     if !$scope.isHost()
