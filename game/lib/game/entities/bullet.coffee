@@ -36,7 +36,6 @@ class Bullet extends GameEntity
     @spawner = null
     @speed = 0
     @damage = 0
-    @damageType = null
     @damageMethod = null
     @modifiers = []
     @vfx = []

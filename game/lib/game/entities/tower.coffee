@@ -63,7 +63,6 @@ class Tower extends GameEntity
     @dpsBoost = 0
     @damage = 0
     @damageMethod = null
-    @damageType = null
     @baseAttackSpeed = 0
     @attackSpeed = 0
     @attackSpeedBoost = 0
@@ -359,7 +358,6 @@ class Tower extends GameEntity
       owner: @getOwner()
       damage: bulletDamage
       damageMethod: @damageMethod
-      damageType: @damageType
       loopAnim: !!@singleBullet
       spawner: @
       modifiers: @getBulletModifiers()
@@ -698,7 +696,6 @@ class Tower extends GameEntity
       attacks: [@attackMoveTypes.join(' & ')] # Turns it into ['ground & air']
       damage: _.uniq(damageArray)
       damageBoost: [@getFormattedBonusDamage()]
-      damageType: [@damageType]
       attackSpeed: _.uniq(attackSpeedArray)
       range: _.uniq(rangeArray)
     }

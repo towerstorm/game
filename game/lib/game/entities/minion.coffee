@@ -189,18 +189,10 @@ class Minion extends GameEntity
       return false;
     if from?
       @lastDamageSource = from
-    amount = @applyResists(amount, from.damageType)
     if ts.game.debugMode
       @receiveDamageLog.push({amount: amount, sourceType: from.imageName})
     super(amount, from)
     @updateHealthBarHealth()
-
-  applyResists: (amount, damageType) ->
-    if damageType == "physical"
-      amount = amount - (amount * (@armor / (@armor + 100)))
-    if damageType == "magical"
-      amount = amount - (amount * (@magicResist / (@magicResist + 100)))
-    return Math.round(amount);
 
   updateHealthBarHealth: ->
     health = Math.max(0, @health)
