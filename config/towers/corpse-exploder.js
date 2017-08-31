@@ -2,14 +2,12 @@ module.exports = {
     id: "corpse-exploder",
     name: "Corpse Exploder",
     description: "When a ground minion dies it explodes it's corpse dealing damage to all minions close to it.",
-    race: "shadow",
     cost: 150,
     imageName: "corpse-exploder.png",
     doesNotShoot: true,
     attackSpeed: 0.2,
     range: 5,
     attackMoveTypes: ['ground'],
-    damageType: 'magical',
     levels: [
       {
         mods: {

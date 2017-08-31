@@ -2,7 +2,6 @@ module.exports = {
     id: "teleporter",
     name: "Teleporter",
     description: "Teleports groups of enemies backwards.",
-    race: "architects",
     cost: 350,
     attackSpeed: 0.0625,
     damage: 0,
@@ -10,7 +9,6 @@ module.exports = {
     idleFrames: 36,
     range: 5,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'pure',
     bullet: 'teleport',
     levels: [
       {

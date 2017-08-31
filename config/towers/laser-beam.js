@@ -2,7 +2,6 @@ module.exports = {
     id: "laser-beam",
     name: "Laser Beam",
     description: "Shoots a single beam in a line damaging all enemies it passes through.",
-    race: "droids",
     cost: 60,
     attackSpeed: 0.25,
     imageName: "laser-beam.png",
@@ -11,7 +10,6 @@ module.exports = {
     attackFrames: [1, 2, 3, 4, 5, 6],
     range: 2.5,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'magical',
     bullet: "laser",
     bulletSpawnOffsets: {
       '0': {x: -18, y: -9},

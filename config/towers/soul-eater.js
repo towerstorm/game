@@ -2,7 +2,6 @@ module.exports = {
     id: "soul-eater",
     name: "Soul Eater",
     description: "Devours minion souls, dealing damage based on how many souls they have. Long range and very slow attack speed.",
-    race: "shadow",
     cost: 350,
     attackSpeed: 0.04,
     damageMethod: "souls",
@@ -12,7 +11,6 @@ module.exports = {
     attackLoopFrames: [4, 5, 6, 7],
     range: 6,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'pure',
     shootVFX: 'soulSucking',
     bullet: "soul",
     bulletSpawnOffsets: {

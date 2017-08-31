@@ -2,13 +2,11 @@ module.exports = {
     id: "fire",
     name: "Volcano",
     description: "Throws out flaming rocks that deal damage to all minions in an area.",
-    race: "elementals",
     cost: 350,
     attackSpeed: 0.66,
     imageName: "fire.png",
     range: 4.5,
     attackMoveTypes: ['ground'],
-    damageType: 'magical',
     bullet: 'fireball',
     mods: {
       bullet: {

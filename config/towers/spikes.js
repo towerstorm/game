@@ -8,7 +8,6 @@ module.exports = {
     imageName: "spikes.png",
     range: 0.6,
     attackMoveTypes: ['ground'],
-    damageType: 'physical',
     zIndex: 5,
     bullet: 'invisible-aoe',
     mods: {

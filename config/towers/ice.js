@@ -2,11 +2,9 @@ module.exports = {
     id: "ice",
     name: "Ice",
     description: "Throws chunks of ice slowing down and damaging a single target.",
-    race: "elementals",
     cost: 50,
     range: 3,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'magical',
     imageName: "ice.png",
     bullet: "iceball",
     levels: [

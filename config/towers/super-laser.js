@@ -2,7 +2,6 @@ module.exports = {
     id: "super-laser",
     name: "Super Laser",
     description: "Shoots out a pulse of energy which damages and slows all nearby enemies",
-    race: "droids",
     cost: 350,
     attackSpeed: 0.1,
     imageName: "super-laser.png",
@@ -11,7 +10,6 @@ module.exports = {
     bullet: "energy-circle",
     range: 2.5,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'magical',
     mods: {
       bullet: {
         aoe: [2.5],

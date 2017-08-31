@@ -2,7 +2,6 @@ module.exports = {
     id: "turret",
     name: "Turret",
     description: "A rapid fire high damage tower that shoots 2 lasers at a single target.",
-    race: "droids",
     cost: 30,
     attackSpeed: 5,
     imageName: "turret.png",
@@ -11,7 +10,6 @@ module.exports = {
     attackFrames: [1],
     range: 2.5,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'magical',
     totalBullets: 2,
     bullet: "turret-laser",
     bulletSpawnOffsets: [

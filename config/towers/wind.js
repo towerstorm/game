@@ -2,7 +2,6 @@ module.exports = {
     id: "wind",
     name: "Wind",
     description: "A Raging whirlwind that slows enemies and deals damage to them as they walk through it.",
-    race: "elementals",
     cost: 50,
     buildsOnRoads: true,
     attackSpeed: 10,
@@ -11,7 +10,6 @@ module.exports = {
     idleFrames: 16,
     range: 0.6,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'magical',
     mods: {
       bullet: {
         aoe: [0.7]

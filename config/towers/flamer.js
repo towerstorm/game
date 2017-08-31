@@ -2,7 +2,6 @@ module.exports = {
     id: "flamer",
     name: "Flamethrower",
     description: "Shoots a large constant flame dealing damage to all minions in an area. ",
-    race: "droids",
     cost: 110,
     attackSpeed: 6,
     imageName: "flamer.png",
@@ -11,7 +10,6 @@ module.exports = {
     attackFrames: [1],
     range: 2,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'magical',
     bullet: "flame",
     singleBullet: true,
     bulletSpawnOffsets: {

@@ -10,7 +10,6 @@ module.exports = {
     attackFrames: [2, 1, 0],
     range: 2.5,
     attackMoveTypes: ['ground', 'air'],
-    damageType: "physical",
     bullet: "bolt",
     bulletSpawnOffsets: {
       '0': {x: -22, y: -5},

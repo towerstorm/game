@@ -2,13 +2,11 @@ module.exports = {
     id: "earth",
     name: "Earth",
     description: "Throws large boulders that stun entire groups of enemies.",
-    race: "elementals",
     cost: 50,
     attackSpeed: 0.16,
     imageName: "earth.png",
     range: 3,
     attackMoveTypes: ['ground'],
-    damageType: 'physical',
     bullet: "boulder",
     levels: [
       {

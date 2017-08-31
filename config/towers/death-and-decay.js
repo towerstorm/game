@@ -2,14 +2,12 @@ module.exports = {
     id: "death-and-decay",
     name: "Death and Decay",
     description: "Creates an AOE of pestilence that deals a percent of each enemies maximum health in damage.",
-    race: "shadow",
     cost: 80,
     damageMethod: "percent",
     attackSpeed: 0.05,
     imageName: "death-and-decay.png",
     range: 2,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'magical',
     bullet: 'death-and-decay',
     mods: {
       bullet: {

@@ -8,7 +8,6 @@ module.exports = {
     bullet: "god-ray",
     range: 5,
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'magical',
     mods: {
       bullet: {
         aoe: [1.5]

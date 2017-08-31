@@ -11,7 +11,6 @@ module.exports = {
     auraRange: 1.7,
     bullet: "speed-electricity",
     attackMoveTypes: ["ground", "air"],
-    damageType: "pure",
     bulletSpawnOffsets: {
       "0": {x: 1, y: -25}
     },

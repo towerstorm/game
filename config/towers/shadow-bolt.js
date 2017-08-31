@@ -2,7 +2,6 @@ module.exports = {
     id: "shadow-bolt",
     name: "Shadow Bolt",
     description: "A high powered crossbow of darkness that deals rapid fire damage to enemies",
-    race: "shadow",
     cost: 50,
     bullet: "shadow-bolt",
     imageName: "shadow-bolt.png",
@@ -10,7 +9,6 @@ module.exports = {
     totalFramesPerAttack: 2,
     attackFrames: [2, 1, 0],
     attackMoveTypes: ['ground', 'air'],
-    damageType: 'magical',
     attackSpeed: 2,
     range: 3,
     bulletSpawnOffsets: {
