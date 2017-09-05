@@ -1,4 +1,4 @@
-<div class="minion-selector unselectable">
+<div class="minion-selector unselectable" ng-show="minionSelectionAvailable">
     <div ng-repeat="minion in minions" data-title="{{minion.name}}" class="minion-icon-wrap {{minion.id}}" ng-click="selectMinion(minion.id)">
         <img width="48" height="48" style="background: url('/img/minion-icons/{{minion.id}}.png'); background-size: 100% auto;" class="rounded float-left minion-icon">
         <div class="selected-overlay" ng-show="selectedMinion.id == minion.id">

@@ -8,6 +8,7 @@ MinionSelectorDirective = ($rootScope) ->
     
     link: (scope, element, attributes) ->
       scope.minions = []
+      scope.minionSelectionAvailable = true
       scope.selectedMinion = null
       scope.chosenMinions = {}
       
@@ -35,6 +36,11 @@ MinionSelectorDirective = ($rootScope) ->
         if player.id == mainPlayerId
           scope.chosenMinions = {}
           player.minions.forEach((id) -> scope.chosenMinions[id] = id) 
+          
+      scope.$on 'game.map.info', (e, mapInfo) ->
+        if mapInfo.teams < 2
+          scope.minionSelectionAvailable = false
+          
           
           
         

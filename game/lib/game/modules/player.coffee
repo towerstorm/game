@@ -94,6 +94,8 @@ class Player
     @race
 
   setAvailableMinions: (minions) ->
+    if !Array.isArray(minions) 
+      return
     @availableMinions = minions
     
   getAvailableMinions: ->

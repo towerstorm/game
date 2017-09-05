@@ -21,6 +21,8 @@ functions = {
     xDist = target.x - pos.x;
     yDist = target.y - pos.y;
     dist = Math.sqrt(xDist*xDist + yDist*yDist);
+    if dist == 0
+      return {x: 0, y: 0}
     unitVec = {x: xDist / dist, y: yDist / dist};
     vel = {x: unitVec.x * speed, y: unitVec.y * speed};
     return vel;

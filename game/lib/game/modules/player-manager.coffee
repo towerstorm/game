@@ -81,9 +81,9 @@ class PlayerManager
     for player in players
       @totalPlayers++
       @players[player.id] = @createPlayer(player.id)
-      @players[player.id].setName player.name
-      @players[player.id].setRace player.race
-      @players[player.id].setAvailableMinions player.minions
+      @players[player.id].setName(player.name)
+      @players[player.id].setRace(player.race)
+      @players[player.id].setAvailableMinions(player.minions)
       playerTeam = player.team
       if ts.game.settings.mode == config.modes.survival
         playerTeam = 0

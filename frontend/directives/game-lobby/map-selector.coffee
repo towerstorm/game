@@ -10,9 +10,18 @@ MapSelectorDirective = ($rootScope) ->
           id: "deep-space-collision"
           image: "deep-space-collision.png",
           name: "Deep Space Collision",
-          description: "A fun survival map"
+          description: "A cutthroat 3 vs 3 battle map"
           teams: 2,
           minPlayers: 4,
+          maxPlayers: 8
+        },
+        {
+          id: "forest-of-survival"
+          image: "forest-of-survival.png",
+          name: "Forest of Survival",
+          description: "A fun survival map"
+          teams: 1,
+          minPlayers: 1,
           maxPlayers: 8
         }
       ]
@@ -24,6 +33,7 @@ MapSelectorDirective = ($rootScope) ->
       
       scope.$on 'game.settings.changeMap', (e, id) ->
         scope.selectedMap = _.find(scope.maps, {id: id})
+        $rootScope.$broadcast("game.map.info", scope.selectedMap) 
       
       scope.selectMap = (id) ->
         if !scope.isHost

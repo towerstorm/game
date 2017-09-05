@@ -7,6 +7,7 @@ PlayerListDirective = ($rootScope) ->
     link: (scope, element, attributes) ->
       scope.state = config.general.states.lobby;
       scope.team = parseInt(attributes.team, 10);
+      scope.teamIsAvailable = false;
       scope.colorClass = getTeamColorClass(scope.team)
       scope.players = []
       
@@ -28,6 +29,11 @@ PlayerListDirective = ($rootScope) ->
         
       scope.$on 'game.settings.state', (e, state) ->
         scope.state = state
+        
+      scope.$on 'game.map.info', (e, mapInfo) ->
+        scope.teamIsAvailable = false
+        if scope.team <= mapInfo.teams
+          scope.teamIsAvailable = true
         
       scope.isInLobby = () ->
         return scope.state == config.general.states.lobby
