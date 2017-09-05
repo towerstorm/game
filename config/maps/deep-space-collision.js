@@ -10,13 +10,13 @@ module.exports = {
     souls: 1000
   },
   buildRestrictions: {
-    '0': {
+    '1': {
       x: {
         min: 0,
         max: 15
       }
     },
-    '1': {
+    '2': {
       x: {
         min: 18,
         max: 33
@@ -138,78 +138,33 @@ module.exports = {
     {
       x: 15, 
       y: 1, 
-      team: 1,
-      // autospawn: {
-      //   value: {
-      //     gold: 0,
-      //     income: 5,
-      //     incomeGrowthPercent: 0.002
-      //   },
-      //   healthGrowth: 0.005,
-      //   speedGrowth: 0.001
-      // }
+      team: 2,
     },
     {
       x: 15, 
       y: 6, 
-      team: 1,
-      // autospawn: {
-      //   value: {
-      //     gold: 0,
-      //     income: 5,
-      //     incomeGrowthPercent: 0.002
-      //   },
-      //   healthGrowth: 0.005,
-      //   speedGrowth: 0.001
-      // }
+      team: 2,
     },
     {
       x: 15, 
       y: 10, 
-      team: 1,
-      // autospawn: {
-      //   value: {
-      //     gold: 0,
-      //     income: 5,
-      //     incomeGrowthPercent: 0.002
-      //   },
-      //   healthGrowth: 0.005,
-      //   speedGrowth: 0.001
-      // }
+      team: 2,
     },
     {
       x: 15, 
       y: 13, 
-      team: 1,
-      // autospawn: {
-      //   value: {
-      //     gold: 0,
-      //     income: 5,
-      //     incomeGrowthPercent: 0.002
-      //   },
-      //   healthGrowth: 0.005,
-      //   speedGrowth: 0.001
-      // }
+      team: 2,
     },
     {
       x: 15, 
       y: 18, 
-      team: 1,
-      // autospawn: {
-      //   value: {
-      //     gold: 0,
-      //     income: 5,
-      //     incomeGrowthPercent: 0.002
-      //   },
-      //   healthGrowth: 0.005,
-      //   speedGrowth: 0.001
-      // }
+      team: 2,
     },
-    {x: 18, y: 1, team: 2},
-    {x: 18, y: 6, team: 2},
-    {x: 18, y: 9, team: 2},
-    {x: 18, y: 13, team: 2},
-    {x: 18, y: 18, team: 2},
+    {x: 18, y: 1, team: 1},
+    {x: 18, y: 6, team: 1},
+    {x: 18, y: 9, team: 1},
+    {x: 18, y: 13, team: 1},
+    {x: 18, y: 18, team: 1},
   ],
   nodePaths: [
     [

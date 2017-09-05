@@ -46,7 +46,7 @@ class CastleManager
       if spawnPointInfo.visible != false
         xPos = spawnPointInfo.x * config.tileSize
         yPos = spawnPointInfo.y * config.tileSize
-        if spawnPointInfo.team == 0
+        if spawnPointInfo.team == 1
           spawnPointInfo.imageName = "spawn-point-red.png"
         else
           spawnPointInfo.imageName = "spawn-point-blue.png"
