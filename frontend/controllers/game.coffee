@@ -73,12 +73,12 @@ GameCtrl = ($scope, $location, $routeParams, AnalyticsService, GameService, Goog
       @$apply fn
 
   $scope.bindDispatcher = =>
-    $scope.$on 'game.map.update', ->
-      $scope.backgroundUrl = GameService.map.background
-      $scope.backgroundWidth = GameService.map.backgroundWidth
+    $scope.$on 'game.map.info', (e, mapInfo) ->
+      $scope.backgroundUrl = mapInfo.background
+      $scope.backgroundWidth = mapInfo.backgroundWidth
       $scope.backgroundSizePercent = $scope.calculateBackgroundSizePercent()
-      $scope.backgroundPosX = (window.innerWidth - GameService.map.backgroundWidth) / 2
-      $scope.backgroundPosY = ((window.innerHeight - GameService.map.backgroundHeight) / 2) + 40 #+40 for top bar
+      $scope.backgroundPosX = (window.innerWidth - mapInfo.backgroundWidth) / 2
+      $scope.backgroundPosY = ((window.innerHeight - mapInfo.backgroundHeight) / 2) + 40 #+40 for top bar
       $scope.resizeLayout()
       $scope.safeApply()
     $scope.$on 'game.player.update', ->

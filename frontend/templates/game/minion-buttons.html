@@ -1,4 +1,4 @@
-<div id="minionButtons" class="minion-buttons" style="width: {{ sidebar.width }}px;">
+<div id="minionButtons" class="minion-buttons" style="width: {{ sidebar.width }}px;" ng-hide="mapFlags.cantPlaceMinions">
     <div class="minion-button-wrapper" ng-repeat="minion in minionButtons" >
         <div class="minion {{ minion.minionType }}" style="margin-top: {{ sidebar.minionSpacing }}px" ng-class="{selected: pickedMinion==minion.minionType, unavailable: !buttonStates.canSendMinion[minion.minionType], invisible: !buttonStates.canSeeMinionButton[minion.minionType]}" ng-click="clickPickMinion(minion.minionType)">
             <div class="dummy"></div>

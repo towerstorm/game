@@ -7,6 +7,7 @@ MinionButtonsDirective = ($parse) ->
     link: (scope, element, attrs) ->
       scope.minionButtons = [];
       scope.highlighted = null
+      scope.mapFlags = {}
 
       scope.safeDigest = (fn) ->
         phase = @$root.$$phase
@@ -30,6 +31,9 @@ MinionButtonsDirective = ($parse) ->
       scope.$on 'game.unpickMinion', ->
         scope.pickedMinion = null
         scope.safeDigest()
+      
+      scope.$on 'game.map.info', (e, mapInfo) ->
+        scope.mapFlags = Object.assign({}, mapInfo.flags);
 
       scope.clickPickMinion = (minionType) ->
         scope.pickedMinion = minionType

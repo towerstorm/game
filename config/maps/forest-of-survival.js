@@ -12,6 +12,9 @@ module.exports = {
   startingStats: {
     souls: 1000
   },
+  flags: {
+    cantPlaceMinions: true 
+  },
   buildRestrictions: {
     '1': {
       x: {

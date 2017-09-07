@@ -603,7 +603,7 @@ angular.module('gameService', ['ngResource']).factory('GameService', ['$resource
         @map = @config.maps[mapId]
         @resX = @map.width * 48
         @resY = @map.height * 48
-        $rootScope.$broadcast('game.map.update')
+        $rootScope.$broadcast('game.map.info', @config.maps[mapId])
 
     ###
      * Sets up the buttons for building towers on the side of the screen
