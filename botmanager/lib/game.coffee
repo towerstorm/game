@@ -1,9 +1,11 @@
 log = require('logger')
-config = require 'config/botmanager'
-gameMsg = require 'config/game-messages'
+config = require('config/botmanager')
+gameMsg = require('config/game-messages')
 bulkLoad = require("config/bulk-load")
 towers = bulkLoad("towers");
 minions = bulkLoad("minions");
+maps = bulkLoad("maps");
+races = bulkLoad("races");
 _ = require 'lodash'
 
 noop = ->
@@ -112,6 +114,9 @@ class Game
 
   getMapId: () ->
     return @mapId
+    
+  getMapInfo: () ->
+    return maps[@mapId]
 
 
   getTimePassed: () ->
@@ -128,7 +133,8 @@ class Game
     TODO: Implement cost and stuff
   ###
   canPickTower: (towerType) ->
-    return @getRace() == towers[towerType].race
+    raceInfo = races[@getRace()]
+    return raceInfo.towers.indexOf(towerType) >= 0
 
 module.exports = Game
 

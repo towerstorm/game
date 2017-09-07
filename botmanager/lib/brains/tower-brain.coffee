@@ -15,7 +15,7 @@ sometimes randomly pick the 2nd or nth best position instead so that bots
 don't always play in the same way
 ###
 class TowerBrain
-  randomness: 15    #Picks from the top 25 positions each time
+  randomness: 0 
   totalTowerSpend: 0
   towerPositions: []
   takenPositions: {}
@@ -25,7 +25,7 @@ class TowerBrain
   mapDetails: null
 
   constructor: (@game) ->
-    @randomness = 20
+    @randomness = 20   #Picks from the top 20 positions each time
     @totalTowerSpend = 0
     @towerPositions = []
     @takenPositions = {}
@@ -41,12 +41,12 @@ class TowerBrain
 
   initMap: (mapId) ->
     @mapDetails = @getMapDetails(mapId)
-    mapWidthPixels = @mapDetails.width
-    mapHeightPixels = @mapDetails.height
+    mapWidthTiles = @mapDetails.width
+    mapHeightTiles = @mapDetails.height
     @towerPositions = []
-    for x in [0...mapWidthPixels]
-      for y in [0...mapHeightPixels]
-        @towerPositions.push {x: x, y: y}
+    for x in [0...mapWidthTiles]
+      for y in [0...mapHeightTiles]
+        @towerPositions.push({x: x, y: y})
 
   bindDispatcher: (@dispatcher) ->
     @dispatcher.on config.messages.gameBeginning, (details) =>
@@ -76,7 +76,6 @@ class TowerBrain
 
 
   getMapDetails: (mapId) ->
-    log.info("Getting map details for map: " + mapId)
     mapDetails = {width: 0, height: 0, nodePaths: []}
     log.info("Map details for map " + mapId + ": " + maps[mapId])
     assert(maps[mapId])
@@ -86,9 +85,7 @@ class TowerBrain
     #Load the paths that we care about, only those that are owned by the opposing team
     if map.spawnPoints? && @game.getTeam()?
       for spawnPoint, num in map.spawnPoints
-        log.info "Comparing spawn team: ", spawnPoint.team, " with my team: ", @game.getTeam()
         if spawnPoint.team != @game.getTeam() 
-          log.info "Pushing path ", num
           mapDetails.nodePaths.push(map.nodePaths[num]);
     return mapDetails
 
@@ -107,15 +104,15 @@ class TowerBrain
     # Get all towers we possibly can send then send random types with more 
     # probability of sending them the more they cost
     towersAvailable = []
-    totalGoldCost = 0
+    costOfAllTowers = 0
     for type, tower of towers
       if @game.getPlayer() && @game.canPickTower(type)
-        towersAvailable.push tower
-        totalGoldCost += tower.cost
+        towersAvailable.push(tower)
+        costOfAllTowers += tower.cost
     if !towersAvailable.length
       return null
 
-    randRoll = Math.floor(Math.random() * totalGoldCost);
+    randRoll = Math.floor(Math.random() * costOfAllTowers);
     goldSum = 0
     for tower in towersAvailable
       goldSum += tower.cost
@@ -144,9 +141,8 @@ class TowerBrain
     biasedRoll = Math.floor(Math.random() * totalRoll)
     rollSum = 0
     for x in [0...max]
-      rollSum += (max - x)
+      rollSum += (max - x) # For max of 10 first rollSum is 10, next is 9, 8, 7 etc
       if biasedRoll <= rollSum
-#        log.info("returning biased roll of: " + x)
         return x
     return 0
 
@@ -158,6 +154,8 @@ class TowerBrain
   ###
   getBestTowerPosition: (towerDetails) ->
     buildPoints = null; buildPoint = null; checkCount = 0
+    buildPoints = [].concat(@calculateBestBuildPoints(towerDetails, @towerPositions, @mapDetails.nodePaths))
+    buildPointIncrease = Math.floor(@game.getTimePassed() / 15);  #1 more build point opens up every 15 seconds
     while checkCount < 100
       checkCount++
       if buildPoint?
@@ -165,8 +163,6 @@ class TowerBrain
           break;
         else
           buildPoints.splice(randRoll, 1)
-      buildPoints = @calculateBestBuildPoints(towerDetails, @towerPositions, @mapDetails.nodePaths)
-      buildPointIncrease = Math.floor(@game.getTimePassed() / 15);  #1 more build point opens up every 15 seconds
       randRoll = @getBiasedRoll(@randomness + buildPointIncrease);
       buildPoint = buildPoints[randRoll]
     return buildPoint

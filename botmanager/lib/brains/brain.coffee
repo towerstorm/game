@@ -86,12 +86,15 @@ class Brain
     if @isBeingPatient()
       return turn
 
+    mapInfo = @game.getMapInfo();
+    mapFlags = mapInfo.flags || {}
+    canPlaceMinions = !mapFlags.cantPlaceMinions
     randRoll = @randomRoll()
     biasToBuildTowers = @getBiasToBuildTowers();
     randRoll += Math.min(logic.maxTowerBuildAggressionOffset, biasToBuildTowers); #more priority on building towers when we don't have enough and less when we do
-    # log.info "Doing turn, Rand Roll: ", randRoll, " aggression: ", @aggression, " total tower spend: ", @towerBrain.totalTowerSpend, " biasToBuildTowers: ", biasToBuildTowers
+    # log.info "Doing turn, Rand Roll: ", randRoll, " aggression: ", @attributes.aggression, " total tower spend: ", @towerBrain.totalTowerSpend, " biasToBuildTowers: ", biasToBuildTowers
     try
-      if randRoll < @attributes.aggression
+      if canPlaceMinions && (randRoll < @attributes.aggression)
           turn = {
             action: config.actions.placeMinion
             settings: @determineBestMinionToSend()
@@ -139,10 +142,10 @@ class Brain
     Random for now, might have logic later on
   ###
   getSpawnPoint: () ->
-    map = maps[@game.getMapId()]
-    if !map
+    mapInfo = @game.getMapInfo();
+    if !mapInfo
       throw new Error("getSpawnPoint could not find map of id: " + @game.getMapId())
-    spawnPoint = _(map.spawnPoints).filter({team: @game.getTeam()}).sample()
+    spawnPoint = _(mapInfo.spawnPoints).filter({team: @game.getTeam()}).sample()
     if !spawnPoint
       throw new Error("Could not find spawn point for team " + @game.getTeam())
     return spawnPoint
