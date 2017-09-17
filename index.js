@@ -4,6 +4,7 @@ var log = require("logger");
 var respawn = require("respawn");
 var db = require("database").db;
 var netconfig = require("config/netconfig");
+var path = require("path");
 
 log.init("towerstorm");
 
@@ -13,7 +14,7 @@ db.onConnect(1, function (err, connection) {
     var apps = ["botmanager", "frontend", "gameserver", "lobby"];
     
     apps.forEach(function(appName) {
-        var app = respawn(['node', './' + appName + "/index.js"], {
+        var app = respawn(['node', path.join(__dirname, './' + appName + "/index.js")], {
             kill: 1000,
             stdout: process.stdout,
             stderr: process.stderr
