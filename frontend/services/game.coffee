@@ -242,7 +242,8 @@ angular.module('gameService', ['ngResource']).factory('GameService', ['$resource
       return scale
 
     isTouchDevice: =>
-      return !!('ontouchstart' of window) || !!('onmsgesturechange' of window);
+      ua = navigator.userAgent.toLowerCase()
+      return ua.indexOf("Android") > -1 || ua.indexOf("iPhone") > -1 || ua.indexOf("iPad") > -1
 
     getSidebarSize: =>
       iconSize = 40

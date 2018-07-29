@@ -87,7 +87,8 @@ class Hud
       ts.input.bind(KEY.C, "sendMinion6")
 
   isTouchDevice: =>
-    return !!('ontouchstart' of window) || !!('onmsgesturechange' of window);
+    ua = navigator.userAgent.toLowerCase()
+    return ua.indexOf("Android") > -1 || ua.indexOf("iPhone") > -1 || ua.indexOf("iPad") > -1
 
   #Render the ui for building a tower
   update: ->

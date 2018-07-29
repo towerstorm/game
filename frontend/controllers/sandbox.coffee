@@ -141,7 +141,8 @@ SandboxCtrl = ($scope, $location, $routeParams, AnalyticsService, GameService, G
     return finalPercent;
 
   $scope.isTouchDevice = =>
-    return !!('ontouchstart' of window) || !!('onmsgesturechange' of window);
+    ua = navigator.userAgent.toLowerCase()
+    return ua.indexOf("Android") > -1 || ua.indexOf("iPhone") > -1 || ua.indexOf("iPad") > -1
 
   $scope.showEndScreen = (didWin) ->
     $scope.gameEndResult = if didWin then "Victory" else "Defeat"
