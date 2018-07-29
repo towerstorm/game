@@ -109,10 +109,14 @@ webpack
 
 ### Frontend code
 
-When modifying any coffee-script code in the `/frontend` folder you need to run gulp to rebuild it:
+When modifying any code in the `/frontend` folder you need to run gulp to rebuild it:
 
 ```
-gulp frontend
+# To build CoffeeScript changes:
+gulp frontend  
+
+# To build Less changes:
+gulp styles
 ```
 
 ### Modifying other code
