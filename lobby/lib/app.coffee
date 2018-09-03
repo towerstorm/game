@@ -2,7 +2,7 @@ netconfig = require("config/netconfig")
 debug = require("debug")("ts:lobby")
 
 process.env.PORT = netconfig.lobby.port
-hostname = process.env.C9_HOSTNAME || process.env.HOSTNAME || "ts.devel"
+hostname = netconfig.lobby.host
 nv = process.env.NODE_ENV || "development"
 
 debug("Cookie hostname is: " + hostname);

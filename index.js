@@ -11,6 +11,9 @@ log.init("towerstorm");
 db.onConnect(1, function (err, connection) {
     if (err) throw new Error("Unable to connect to RethinkDB. Please ensure it's running on port " + netconfig.db.port);
     
+    console.log("Hostname is set to " + netconfig.lobby.host + ". If this is not the url you use to access the game\
+        \nyou can change the environment variable HOSTNAME or update it in config/netconfig.js\n");
+    
     var apps = ["botmanager", "frontend", "gameserver", "lobby"];
     
     apps.forEach(function(appName) {
