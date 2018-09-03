@@ -28,7 +28,7 @@ You can either clone this project on [Cloud9](https://c9.io) or clone these file
 ## Running development
 
 - `./init.sh` - This sets up the RethinkDB database, currently Debian/Ubuntu only. 
-- `npm install`
+- `NODE_ENV=development npm install`
 - `npm install --global gulp-cli@1.3 webpack@2.4`
 - `gulp dist`
 - `webpack`
