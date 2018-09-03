@@ -41,8 +41,8 @@ You can either clone this project on [Cloud9](https://c9.io) or clone these file
 
 ### Running on your desktop
 
-- Add the line `127.0.0.1   ts.dev` to your `/etc/hosts` file.
-- Go to `ts.dev:8080` in your browser. 
+- Add the line `127.0.0.1   ts.devel` to your `/etc/hosts` file.
+- Go to `ts.devel:8080` in your browser. 
 
 ## Running in production
 
@@ -80,7 +80,7 @@ Yes this is super hacky.
 
 These are all optional
 
-- HOSTNAME - The hostname or url of your server, defaults to `ts.dev` if it's not set which is only useful for development.
+- HOSTNAME - The hostname or url of your server, defaults to `ts.devel` if it's not set which is only useful for development.
 - COOKIE_SECRET - Secret key used for encrypting login cookies
 - DD_API_KEY - For sending your server metrics to Datadog
 - DD_APP_KEY - For sending your server metrics to Datadog

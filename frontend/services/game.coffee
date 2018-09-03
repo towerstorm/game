@@ -417,7 +417,7 @@ angular.module('gameService', ['ngResource']).factory('GameService', ['$resource
           @hashIncorrect = true;
           AnalyticsService.track("Hash is incorrect", {tick: tick})
           @reportInvalidGameState tick, gameSnapshot, (err, data) =>
-            if window.location.href.match(/ts.dev/)
+            if window.location.href.match(/ts.devel/)
               throw new Error("Hash incorrect")
             else
               location.reload(); #Refresh the page.

@@ -15,7 +15,7 @@ sessionStore = tdb.sessionStore
 
 app = express()
 
-hostname = process.env.C9_HOSTNAME || process.env.HOSTNAME || "ts.dev"
+hostname = process.env.C9_HOSTNAME || process.env.HOSTNAME || "ts.devel"
 env = process.env.NODE_ENV || "development"
 
 debug("Cookie hostname is: " + hostname);

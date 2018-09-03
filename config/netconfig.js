@@ -25,11 +25,11 @@ dev = {
   gs: {
     port: 8082,
     host: 'localhost',
-    externalHost: process.env.C9_HOSTNAME || process.env.HOSTNAME || 'ts.dev'
+    externalHost: process.env.C9_HOSTNAME || process.env.HOSTNAME || 'ts.devel'
   },
   lobby: {
     port: 8081,
-    host: process.env.C9_HOSTNAME || process.env.HOSTNAME || 'ts.dev'
+    host: process.env.C9_HOSTNAME || process.env.HOSTNAME || 'ts.devel'
   }
 };
 
