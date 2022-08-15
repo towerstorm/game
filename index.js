@@ -1,7 +1,8 @@
 require("coffee-script/register");
 require('app-module-path').addPath(__dirname);
 var log = require("logger");
-var respawn = require("respawn");
+//var respawn = require("respawn");
+var spawn = require("child_process").spawn;
 var db = require("database").db;
 var netconfig = require("config/netconfig");
 var path = require("path");
@@ -17,11 +18,14 @@ db.onConnect(1, function (err, connection) {
     var apps = ["botmanager", "frontend", "gameserver", "lobby"];
     
     apps.forEach(function(appName) {
-        var app = respawn(['node', path.join(__dirname, './' + appName + "/index.js")], {
+        /* var app = respawn(['node', ' ' + appName + "/index.js"], {
             kill: 1000,
             stdout: process.stdout,
             stderr: process.stderr
         });
-        app.start();
+        console.log("Starting " + appName + " with respawn " + app.pid);
+        app.start(); */
+        var app = spawn('node', [appName + "/index.js"]);
+        app.stdout.pipe(process.stdout);
     });
 });
